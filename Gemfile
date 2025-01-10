@@ -10,7 +10,7 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
-gem "sass-rails"
+# gem "sass-rails"
 gem "slim-rails"
 gem 'devise', '~> 4.9', '>= 4.9.4'
 
