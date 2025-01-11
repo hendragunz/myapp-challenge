@@ -1,0 +1,56 @@
+section.section.main-section
+  .card
+    header.card-header
+      p.card-header-title
+        span.icon
+          i.mdi.mdi-lock
+        |  Sign Up
+
+    .card-content
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+
+        .flex.flex-row.space-x-4.field.spaced
+          div[class="basis-1/2"]
+            = f.label :first_name, "First Name", class: 'label'
+            .control.icons-left
+              = f.text_field :first_name, autofocus: true, class: 'input', placeholder: "First name"
+              span.icon.is-small.left
+                i.mdi.mdi-account
+
+          div[class="basis-1/2"]
+            = f.label :last_name, "Last Name", class: 'label'
+            .control.icons-left
+              = f.text_field :last_name, autofocus: true, class: 'input', placeholder: "Last name"
+              span.icon.is-small.left
+                i.mdi.mdi-account
+
+        .field.spaced
+          = f.label :email, "Email Address", class: 'label'
+          .control.icons-left
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input', placeholder: "your@email.com"
+            span.icon.is-small.left
+              i.mdi.mdi-account
+
+        .field.spaced
+          = f.label :password, 'Password', class: 'label'
+          p.control.icons-left
+            = f.password_field :password, placeholder: "password", class: 'input'
+            span.icon.is-small.left
+              i.mdi.mdi-asterisk
+
+        .field.spaced
+          = f.label :password_confirmation, 'Password Confirmation', class: 'label'
+          p.control.icons-left
+            = f.password_field :password_confirmation, placeholder: "password", class: 'input'
+            span.icon.is-small.left
+              i.mdi.mdi-asterisk
+
+
+        hr
+
+        .field.grouped
+          .control
+            = f.submit "Sign Up", class: 'button blue'
+
+          .control
+            = link_to 'Login', new_user_session_path, class: 'button'

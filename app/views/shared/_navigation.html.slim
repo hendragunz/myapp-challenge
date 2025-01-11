@@ -1,0 +1,92 @@
+nav#navbar-main.navbar.is-fixed-top
+  .navbar-brand
+    a.navbar-item.mobile-aside-button
+      span.icon
+        i.mdi.mdi-forwardburger.mdi-24px
+    .navbar-item
+      .control
+        input.input[placeholder="Search everywhere..."]
+  .navbar-brand.is-right
+    a.navbar-item.--jb-navbar-menu-toggle[data-target="navbar-menu"]
+      span.icon
+        i.mdi.mdi-dots-vertical.mdi-24px
+
+  #navbar-menu.navbar-menu
+    .navbar-end
+      .navbar-item.dropdown.has-divider
+        a.navbar-link
+          span.icon
+            i.mdi.mdi-menu
+          span
+            | Sample Menu
+          span.icon
+            i.mdi.mdi-chevron-down
+        .navbar-dropdown
+          a.navbar-item[href="profile.html"]
+            span.icon
+              i.mdi.mdi-account
+            span
+              | My Profile
+          a.navbar-item
+            span.icon
+              i.mdi.mdi-settings
+            span
+              | Settings
+          a.navbar-item
+            span.icon
+              i.mdi.mdi-email
+            span
+              | Messages
+          hr.navbar-divider
+          a.navbar-item
+            span.icon
+              i.mdi.mdi-logout
+            span
+              | Log Out
+      .navbar-item.dropdown.has-divider.has-user-avatar
+        a.navbar-link
+
+        .user-avatar
+          img.rounded-full[src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe"]
+        .is-user-name
+          span
+            | John Doe
+        span.icon
+          i.mdi.mdi-chevron-down
+        .navbar-dropdown
+          a.navbar-item.--set-active-profile-html[href="profile.html"]
+            span.icon
+              i.mdi.mdi-account
+            span
+              | My Profile
+          a.navbar-item
+            span.icon
+              i.mdi.mdi-settings
+            span
+              | Settings
+          a.navbar-item
+            span.icon
+              i.mdi.mdi-email
+            span
+              | Messages
+          hr.navbar-divider
+          a.navbar-item
+            span.icon
+              i.mdi.mdi-logout
+            span
+              | Log Out
+      a.navbar-item.has-divider.desktop-icon-only[href="https://justboil.me/tailwind-admin-templates"]
+        span.icon
+          i.mdi.mdi-help-circle-outline
+        span
+          | About
+      a.navbar-item.has-divider.desktop-icon-only[href="https://github.com/justboil/admin-one-tailwind"]
+        span.icon
+          i.mdi.mdi-github-circle
+        span
+          | GitHub
+      a.navbar-item.desktop-icon-only[title="Log out"]
+        span.icon
+          i.mdi.mdi-logout
+        span
+          | Log out
