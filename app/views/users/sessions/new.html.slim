@@ -1,0 +1,32 @@
+section.section.main-section
+  .card
+    header.card-header
+      p.card-header-title
+        span.icon
+          i.mdi.mdi-lock
+        |  Login
+
+    .card-content
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field.spaced
+          = f.label :email, "Email Address", class: 'label'
+          .control.icons-left
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input', placeholder: "your@email.com"
+            span.icon.is-small.left
+              i.mdi.mdi-account
+
+        .field.spaced
+          = f.label :password, 'Password', class: 'label'
+          p.control.icons-left
+            = f.password_field :password, placeholder: "password", class: 'input'
+            span.icon.is-small.left
+              i.mdi.mdi-asterisk
+
+        hr
+
+        .field.grouped
+          .control
+            = f.submit "Sign In", class: 'button blue'
+
+          .control
+            = link_to 'Sign Up', new_user_registration_path, class: 'button'
