@@ -1,5 +1,5 @@
 doctype html
-html.form-screen
+html
   head
     title= content_for(:title) || "Myapp"
     meta[name="viewport" content="width=device-width,initial-scale=1"]
@@ -15,5 +15,5 @@ html.form-screen
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-  body
+  body.form-screen
     = yield

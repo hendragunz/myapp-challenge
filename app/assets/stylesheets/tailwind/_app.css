@@ -22,7 +22,7 @@ body {
   @apply overflow-hidden lg:overflow-visible;
 }
 
-.form-screen body {
+body.form-screen {
   @apply p-0;
 }
 
