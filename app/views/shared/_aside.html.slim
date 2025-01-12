@@ -9,11 +9,12 @@ aside.aside.is-placed-left.is-expanded
       | General
     ul.menu-list
       li.--set-active-index-html
-        a[href="index.html"]
+        = link_to root_path do
           span.icon
             i.mdi.mdi-desktop-mac
           span.menu-item-label
             | Dashboard
+
     p.menu-label
       | Examples
     ul.menu-list

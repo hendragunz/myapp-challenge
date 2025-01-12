@@ -17,67 +17,19 @@ nav#navbar-main.navbar.is-fixed-top
         a.navbar-link
           span.icon
             i.mdi.mdi-menu
-          span
-            | Sample Menu
+          span= current_user.full_name
+
           span.icon
             i.mdi.mdi-chevron-down
         .navbar-dropdown
-          a.navbar-item[href="profile.html"]
+          = link_to edit_user_registration_path, class: 'navbar-item' do
             span.icon
               i.mdi.mdi-account
             span
               | My Profile
-          a.navbar-item
-            span.icon
-              i.mdi.mdi-settings
-            span
-              | Settings
-          a.navbar-item
-            span.icon
-              i.mdi.mdi-email
-            span
-              | Messages
           hr.navbar-divider
-          a.navbar-item
+          = link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?", turbo_action: :replace }, class: 'navbar-item', title: 'Log out' do
             span.icon
               i.mdi.mdi-logout
             span
               | Log Out
-      .navbar-item.dropdown.has-divider.has-user-avatar
-        a.navbar-link
-
-        .user-avatar
-          img.rounded-full[src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe"]
-        .is-user-name
-          span= current_user.full_name
-
-        / span.icon
-        /   i.mdi.mdi-chevron-down
-        / .navbar-dropdown
-        /   a.navbar-item.--set-active-profile-html[href="profile.html"]
-        /     span.icon
-        /       i.mdi.mdi-account
-        /     span
-        /       | My Profile
-        /   a.navbar-item
-        /     span.icon
-        /       i.mdi.mdi-settings
-        /     span
-        /       | Settings
-        /   a.navbar-item
-        /     span.icon
-        /       i.mdi.mdi-email
-        /     span
-        /       | Messages
-        /   hr.navbar-divider
-        /   a.navbar-item
-        /     span.icon
-        /       i.mdi.mdi-logout
-        /     span
-        /       | Log Out
-
-      = link_to destroy_user_session_path, data: { turbo_method: :delete }, class: 'navbar-item desktop-icon-only', title: 'Log out' do
-        span.icon
-          i.mdi.mdi-logout
-        span
-          | Log out

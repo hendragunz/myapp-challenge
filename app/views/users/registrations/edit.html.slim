@@ -1,0 +1,85 @@
+section.section.main-section
+  .grid.grid-cols-1.gap-6.lg:grid-cols-2.mb-6
+    .card
+      header.card-header
+        p.card-header-title
+          span.icon
+            i.mdi.mdi-account-circle
+          | Profile
+
+      .card-content
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          .field
+            = f.label :first_name, 'First Name', class: 'label'
+            .field-body
+              .field
+                .control
+                  = f.text_field :first_name, class: 'input', required: true, autocomplete: 'on'
+
+          .field
+            = f.label :first_name, 'Last Name', class: 'label'
+            .field-body
+              .field
+                .control
+                  = f.text_field :last_name, class: 'input', required: true, autocomplete: 'on'
+
+          .field
+            = f.label :email, 'Email', class: 'label'
+            .field-body
+              .field
+                .control
+                  = f.email_field :email, class: 'input', required: true, autocomplete: 'on'
+
+          .field
+            = f.label :current_password, 'Current Password', class: 'label'
+            .field-body
+              .field
+                .control
+                  = f.password_field :current_password, class: 'input', required: true, autocomplete: 'current-password'
+
+          hr
+          .field
+            .control
+              = f.submit "Submit", class: 'button green'
+
+
+  .card
+    header.card-header
+      p.card-header-title
+        span.icon
+          i.mdi.mdi-lock
+        |  Change Password
+    .card-content
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        .field
+          = f.label :current_password, 'Current Password', class: 'label'
+            .field-body
+              .field
+                .control
+                  = f.password_field :current_password, class: 'input', required: true, autocomplete: 'current-password'
+          p.help
+            | Required. Your current password
+
+        hr
+
+        .field
+          = f.label :password, 'New Password', class: 'label'
+            .field-body
+              .field
+                .control
+                  = f.password_field :password, class: 'input', required: true, autocomplete: 'new-password'
+          p.help
+            | Required. New password
+
+        .field
+          = f.label :password, 'Confirm Password', class: 'label'
+            .field-body
+              .field
+                .control
+                  = f.password_field :password_confirmation, class: 'input', required: true, autocomplete: 'new-password'
+          p.help
+            | Required. New password one more time
+        hr
+        .field
+          .control
+            = f.submit "Submit", class: 'button green'
