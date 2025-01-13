@@ -1,0 +1,35 @@
+section.is-title-bar
+  .flex.flex-col.md:flex-row.items-center.justify-between.space-y-6.md:space-y-0
+    ul
+      li Keywords - Search Results
+
+
+.section.main-section
+  .card.mb-6
+    header.card-header
+      p.card-header-title
+        span.icon
+          i.mdi.mdi-ballot
+        |  Upload Keywords
+
+    .card-content
+      = form_for(@upload_keywords, as: :upload_keywords, url: keywords_path, multipart: true) do |f|
+        .field
+          label.block
+            span.sr-only
+              | Choose profile photo
+            = f.file_field :file, accept: 'text/csv', class: "block w-full text-sm text-slate-500 \
+                                                              file:mr-4 file:py-2 file:px-4 \
+                                                              file:rounded-full file:border-0 \
+                                                              file:text-sm file:font-semibold"
+
+        hr
+
+        .field.grouped
+          .control
+            = f.submit 'Submit', class: 'button green'
+            = link_to 'Example CSV', '/example_keywords.csv', target: :blank, class: 'ml-4'
+
+
+
+  = render 'table', keywords: @keywords

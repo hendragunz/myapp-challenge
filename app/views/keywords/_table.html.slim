@@ -1,0 +1,37 @@
+.card.has-table
+  header.card-header
+    p.card-header-title
+      span.icon
+        i.mdi.mdi-account-multiple
+      |  Keywords
+
+  .card-content
+    table
+      thead
+        tr
+          / th.checkbox-cell
+          /   label.checkbox
+          /     input[type="checkbox"]
+          /     span.check
+          th Name
+          th Processed At
+          th
+
+      tbody
+        - keywords.each do |keyword|
+          tr
+            / td.checkbox-cell
+            /   label.checkbox
+            /     input[type="checkbox"]
+            /     span.check
+            td= keyword.name
+            td
+            td.actions-cell
+              .buttons.right.nowrap
+                / button.button.small.green.--jb-modal[data-target="sample-modal-2" type="button"]
+                /   span.icon
+                /     i.mdi.mdi-eye
+
+                = link_to keyword_path(keyword), class: 'button small red --jb-modal', data: { turbo_confirm: "Are you sure to remove this keyword?", turbo_method: :delete } do
+                  span.icon
+                    i.mdi.mdi-trash-can
