@@ -18,4 +18,5 @@ html
   body
     = render 'shared/navigation'
     = render 'shared/aside'
+    = render 'shared/flash' if flash.present?
     = yield
