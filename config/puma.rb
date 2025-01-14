@@ -32,3 +32,12 @@ plugin :tmp_restart
 # Specify the PID file. Defaults to tmp/pids/server.pid in development.
 # In other environments, only set the PID file if requested.
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
+
+
+before_fork do
+  ActiveRecord::Base.connection.disconnect!
+end
+
+on_worker_boot do
+  ActiveRecord::Base.establish_connection
+end
