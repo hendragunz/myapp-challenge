@@ -12,6 +12,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "slim-rails"
 gem 'devise', '~> 4.9', '>= 4.9.4'
+gem 'devise-token_authenticatable'
 gem "redis", ">= 4.0.1"
 gem 'sidekiq', '~> 7.3', '>= 7.3.7'
 gem 'sidekiq-throttled', '~> 1.5', '>= 1.5.2'
@@ -56,3 +57,4 @@ end
 gem "tailwindcss-rails", "~> 3.1"
 
 gem "grape", "~> 2.2"
+gem 'grape-entity'

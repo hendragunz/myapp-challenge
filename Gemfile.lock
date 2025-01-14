@@ -112,6 +112,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-token_authenticatable (1.1.0)
+      devise (>= 4.0.0, < 5.0.0)
     dotenv (3.1.7)
     drb (2.2.1)
     dry-core (1.1.0)
@@ -140,6 +142,9 @@ GEM
       mustermann-grape (~> 1.1.0)
       rack (>= 2)
       zeitwerk
+    grape-entity (1.0.1)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.3.2)
     httparty (0.22.0)
       csv
       mini_mime (>= 1.0.0)
@@ -173,6 +178,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.5)
+    multi_json (1.15.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mustermann (3.0.3)
@@ -391,8 +397,10 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9, >= 4.9.4)
+  devise-token_authenticatable
   dotenv
   grape (~> 2.2)
+  grape-entity
   httparty
   importmap-rails
   jbuilder
