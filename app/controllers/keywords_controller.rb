@@ -2,7 +2,7 @@ require 'ostruct'
 
 class KeywordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_keyword, only: [:destroy]
+  before_action :find_keyword, only: [:destroy, :show]
 
   # GET - keywords_path
   #
@@ -10,6 +10,8 @@ class KeywordsController < ApplicationController
     load_data
     @upload_keywords = OpenStruct.new()
   end
+
+  def show; end
 
   # POST - keywords_path
   #

@@ -34,10 +34,14 @@
             td= keyword.processed_at
             td.actions-cell
               .buttons.right.nowrap
+                = link_to keyword_path(keyword), class: 'button small' do
+                  span.icon
+                    i.mdi.mdi-eye-circle-outline
+
                 = link_to "https://www.google.com/search?q=#{CGI.escape(keyword.name)}", class: 'button small green', target: :blank do
                   span.icon
                     i.mdi.mdi-open-in-new
 
-                = link_to keyword_path(keyword), class: 'button small red --jb-modal', data: { turbo_confirm: "Are you sure to remove this keyword?", turbo_method: :delete } do
+                = link_to keyword_path(keyword), class: 'button small red', data: { turbo_confirm: "Are you sure to remove this keyword?", turbo_method: :delete } do
                   span.icon
                     i.mdi.mdi-trash-can
