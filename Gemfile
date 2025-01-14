@@ -13,8 +13,8 @@ gem "jbuilder"
 gem "slim-rails"
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem "redis", ">= 4.0.1"
-gem "sidekiq"
-gem "sidekiq-throttled"
+gem 'sidekiq', '~> 7.3', '>= 7.3.7'
+gem 'sidekiq-throttled', '~> 1.5', '>= 1.5.2'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -31,6 +31,7 @@ gem "bootsnap", require: false
 
 gem 'httparty'
 gem 'nokogiri'
+gem "selenium-webdriver"
 
 
 group :development, :test do
@@ -50,7 +51,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
 end
 
 gem "tailwindcss-rails", "~> 3.1"

@@ -403,8 +403,8 @@ DEPENDENCIES
   redis (>= 4.0.1)
   rubocop-rails-omakase
   selenium-webdriver
-  sidekiq
-  sidekiq-throttled
+  sidekiq (~> 7.3, >= 7.3.7)
+  sidekiq-throttled (~> 1.5, >= 1.5.2)
   slim-rails
   sprockets-rails
   stimulus-rails
