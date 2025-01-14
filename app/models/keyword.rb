@@ -52,6 +52,8 @@ class Keyword < ApplicationRecord
     self.processed_at         = Time.now
     self.save!
 
+    driver.quit
+
     self
   end
 
