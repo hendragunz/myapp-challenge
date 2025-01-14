@@ -6,6 +6,7 @@ class Keyword < ApplicationRecord
   belongs_to :user
 
   scope :ascending, -> { order(name: :asc) }
+  scope :newest,    -> { order(created_at: :desc) }
 
   # callbacks before validations
   #
@@ -18,7 +19,7 @@ class Keyword < ApplicationRecord
 
 
   # Callbacks after creation
-  after_create :async_process_scrap
+  after_create_commit :async_process_scrap
 
   def processed?
     processed_at.present? || true
