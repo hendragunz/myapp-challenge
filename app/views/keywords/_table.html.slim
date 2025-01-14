@@ -9,23 +9,27 @@
     table
       thead
         tr
-          / th.checkbox-cell
-          /   label.checkbox
-          /     input[type="checkbox"]
-          /     span.check
           th Name
+          th Total AdWords
+          th Total Links
+          th Search Results
           th Processed At
           th
 
       tbody
         - keywords.each do |keyword|
           tr
-            / td.checkbox-cell
-            /   label.checkbox
-            /     input[type="checkbox"]
-            /     span.check
             td= keyword.name
             td
+              - if keyword.processed?
+                = keyword.total_adwords
+            td
+              - if keyword.processed?
+                = keyword.total_links
+            td
+              - if keyword.processed?
+                = keyword.total_search_results
+            td= keyword.processed_at
             td.actions-cell
               .buttons.right.nowrap
                 / button.button.small.green.--jb-modal[data-target="sample-modal-2" type="button"]
