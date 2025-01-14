@@ -15,6 +15,15 @@ class KeywordsController < ApplicationController
   #
   def create
     parser        = KeywordParser.new(current_user, upload_keywords_params[:file])
+
+    if parser.keywords.length > 100
+      flash[:error] = "Please upload with maximum 100 rows per file"
+      return redirect_to action: :index
+    elsif parser.keywords.length == 0
+      flash[:error] = "Please upload minimum 1 keyword in file"
+      return redirect_to action: :index
+    end
+
     new_keywords  = parser.new_keywords
 
     if new_keywords.present?
