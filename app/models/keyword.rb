@@ -29,10 +29,17 @@ class Keyword < ApplicationRecord
     # scrap using selenium chrome
     # headless mode
     #
-    options   = Selenium::WebDriver::Chrome::Options.new
+
+    options     = Selenium::WebDriver::Chrome::Options.new
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+
+    # heroku need to know where is the path for Chrome
+    if chrome_bin = ENV.fetch('GOOGLE_CHROME_REAL', nil)
+      options.binary  = chrome_bin
+    end
+
     driver    = Selenium::WebDriver.for :chrome, options: options
     driver.navigate.to "https://www.google.com/search?q=#{CGI.escape(name)}"
     document  = Nokogiri::HTML(driver.page_source)
