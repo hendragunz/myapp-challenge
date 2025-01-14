@@ -18,7 +18,7 @@ class KeywordsController < ApplicationController
     new_keywords  = parser.new_keywords
 
     if new_keywords.present?
-      @keywords = current_user.keywords.insert_all(parser.new_keywords.map{|word| { name: word }})
+      @keywords = new_keywords.map{|rec| current_user.keywords.create(name: rec)}
       flash[:success] = "Successfully upload #{@keywords.length} keyword(s)"
       redirect_to action: :index
     else
@@ -38,7 +38,7 @@ class KeywordsController < ApplicationController
   private
 
   def load_data
-    @keywords = current_user.keywords.ascending
+    @keywords = current_user.keywords.newest
   end
 
   def upload_keywords_params

@@ -9,6 +9,7 @@
     table
       thead
         tr
+          th ID
           th Name
           th Total AdWords
           th Total Links
@@ -19,6 +20,7 @@
       tbody
         - keywords.each do |keyword|
           tr
+            td= keyword.id
             td= keyword.name
             td
               - if keyword.processed?
@@ -32,9 +34,9 @@
             td= keyword.processed_at
             td.actions-cell
               .buttons.right.nowrap
-                / button.button.small.green.--jb-modal[data-target="sample-modal-2" type="button"]
-                /   span.icon
-                /     i.mdi.mdi-eye
+                = link_to "https://www.google.com/search?q=#{CGI.escape(keyword.name)}", class: 'button small green', target: :blank do
+                  span.icon
+                    i.mdi.mdi-open-in-new
 
                 = link_to keyword_path(keyword), class: 'button small red --jb-modal', data: { turbo_confirm: "Are you sure to remove this keyword?", turbo_method: :delete } do
                   span.icon
