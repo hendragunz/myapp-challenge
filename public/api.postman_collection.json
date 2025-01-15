@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "e79fe20c-9643-4bd6-ad16-1a9c591f4444",
+		"name": "Rails Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "562",
+		"_collection_link": "https://solar-astronaut-954056.postman.co/workspace/Team-Workspace~f4c386c5-8d30-491f-80e3-5a1ece36291b/collection/562-e79fe20c-9643-4bd6-ad16-1a9c591f4444?action=share&source=collection_link&creator=562"
+	},
+	"item": [
+		{
+			"name": "Get PING",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/ping"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": {\n        \"email\": \"your.email@example.com\", \n        \"password\": \"yourpass\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/api/v1/auth"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Keywords",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "nWTGBge8zscxvqZmEyxh",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": "http://localhost:3000/api/v1/keywords"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Keyword",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access_token",
+						"value": "nWTGBge8zscxvqZmEyxh",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": "http://localhost:3000/api/v1/keywords"
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Keywords",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/api/v1/keywords"
+			},
+			"response": []
+		}
+	]
+}
