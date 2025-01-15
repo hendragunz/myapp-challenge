@@ -54,7 +54,7 @@ group :test do
   gem "capybara"
 end
 
-gem "tailwindcss-rails", "~> 3.1"
+gem "tailwindcss-rails", "~> 3.2"
 
 gem "grape", "~> 2.2"
 gem 'grape-entity'
