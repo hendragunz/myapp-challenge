@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :keyword do
-    name { FFaker::Food.ingredient }
+    sequence(:name) { |n| "#{FFaker::Food.ingredient}-#{n}" }
     association :user
   end
 end

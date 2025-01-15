@@ -20,7 +20,7 @@ module Myapp
       desc "To create keywords from uploaded file"
       params do
         requires :keyword, type: Hash do
-          requires :file, type: File#, content_type: ['text/plain", "application/csv']
+          requires :file, type: File, allow_blank: false
         end
       end
       post do
@@ -46,13 +46,23 @@ module Myapp
       end
 
 
-      desc "Return detail of keyword result"
+
       params do
         requires :id, type: Integer, desc: 'Keyword ID.'
       end
       route_param :id do
-        get do
+        before do
           @keyword = current_user.keywords.find(params[:id])
+        end
+
+        desc "Return detail of keyword result"
+        get do
+          present @keyword, with: Entities::KeywordEntity
+        end
+
+        desc "To remove keyword"
+        delete do
+          @keyword.destroy
           present @keyword, with: Entities::KeywordEntity
         end
       end

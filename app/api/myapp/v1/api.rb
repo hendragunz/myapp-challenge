@@ -17,6 +17,10 @@ module Myapp
       end
     end
 
+    rescue_from ActiveRecord::RecordNotFound do |e|
+      error!("Data not found", 404)
+    end
+
     desc 'Return a test API Response'
     get :ping do
       { hello: :world }
