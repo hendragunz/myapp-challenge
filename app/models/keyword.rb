@@ -5,8 +5,13 @@ class Keyword < ApplicationRecord
 
   belongs_to :user
 
-  scope :ascending, -> { order(name: :asc) }
-  scope :newest,    -> { order(created_at: :desc) }
+  scope :ascending,     -> { order(name: :asc) }
+  scope :newest,        -> { order(created_at: :desc) }
+  scope :quick_search,  -> (terms) do
+    collection = newest
+    collection = collection.where("keywords.name LIKE ?", "%#{terms}%") if terms.present?
+    collection # return this last query
+  end
 
   # callbacks before validations
   #

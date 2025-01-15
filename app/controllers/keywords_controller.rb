@@ -9,7 +9,7 @@ class KeywordsController < ApplicationController
   #
   def index
     load_data
-    @upload_keywords = OpenStruct.new()
+    @search = OpenStruct.new(search_params)
   end
 
   def show; end
@@ -57,7 +57,11 @@ class KeywordsController < ApplicationController
   private
 
   def load_data
-    @keywords = current_user.keywords.newest
+    @keywords = current_user.keywords.quick_search(search_params[:terms])
+  end
+
+  def search_params
+    params.fetch(:search, {}).permit(:terms)
   end
 
   def upload_keywords_params

@@ -26,6 +26,23 @@ RSpec.describe KeywordsController, type: :controller do
         expect(assigns(:keywords)).to match_array(keywords)
       end
     end
+
+    context 'with some existing data' do
+      let!(:keyword1) { create(:keyword, user: user, name: "The favorite beach in Thailand for tourist") }
+      let!(:keyword2) { create(:keyword, user: user, name: "The favorite hotels in Bangkok for budget traveller") }
+      let!(:keyword3) { create(:keyword, user: user, name: "The icon of Bangkok Thailand") }
+
+      it 'sould return all without search' do
+        get :index
+        expect(assigns(:keywords)).to match_array([keyword1, keyword2, keyword3])
+      end
+
+      it 'sould return keywords with given search properly' do
+        get :index, params: { search: { terms: 'bangkok' } }
+        expect(assigns(:keywords)).to include(keyword2, keyword3)
+        expect(assigns(:keywords)).to_not  include(keyword1)
+      end
+    end
   end
 
 
