@@ -1,6 +1,8 @@
 ## Rails Test Challenge
 
 Some Information about this app: 
+- **Rails 7.x**
+- **Ruby 3.3.6**
 - **Devise** for authentication
 - **Grape** for RESTful API
 - **RSpec** for testing
