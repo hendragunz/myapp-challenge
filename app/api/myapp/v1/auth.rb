@@ -4,8 +4,8 @@ module Myapp
 
       params do
         requires :user, type: Hash, documentation: { param_type: 'body' } do
-          requires :email, type: String
-          requires :password, type: String
+          requires :email,    type: String, allow_blank: false
+          requires :password, type: String, allow_blank: false
         end
       end
       post do
