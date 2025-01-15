@@ -46,6 +46,7 @@ class Keyword < ApplicationRecord
     end
 
     driver    = Selenium::WebDriver.for :chrome, options: options
+    driver.manage.timeouts.implicit_wait = 2 # in seconds
     driver.navigate.to "https://www.google.com/search?q=#{CGI.escape(name)}"
     document  = Nokogiri::HTML(driver.page_source)
 
