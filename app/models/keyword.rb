@@ -15,7 +15,7 @@ class Keyword < ApplicationRecord
   # validations
   #
   validates :name,  presence: true,
-                    uniqueness: { case_sensitive: false }
+                    uniqueness: { case_sensitive: false, scope: :user_id }
 
 
   # Callbacks after creation
