@@ -1,6 +1,7 @@
 require 'ostruct'
 
 class KeywordsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   before_action :authenticate_user!
   before_action :find_keyword, only: [:destroy, :show]
 
@@ -16,24 +17,31 @@ class KeywordsController < ApplicationController
   # POST - keywords_path
   #
   def create
-    parser        = KeywordParser.new(current_user, upload_keywords_params[:file])
+    begin
+      return redirect_to({action: :index}, flash: {error: 'Uploaded CSV file must be exists'}) if upload_keywords_params[:file].blank?
+      parser = KeywordParser.new(current_user, upload_keywords_params[:file])
 
-    if parser.keywords.length > 100
-      flash[:error] = "Please upload with maximum 100 rows per file"
-      return redirect_to action: :index
-    elsif parser.keywords.length == 0
-      flash[:error] = "Please upload minimum 1 keyword in file"
-      return redirect_to action: :index
-    end
+      if parser.keywords.length > 100
+        flash[:error] = "Please upload with maximum 100 rows per file"
+        return redirect_to action: :index
+      elsif parser.keywords.length == 0
+        flash[:error] = "Please upload minimum 1 keyword in file"
+        return redirect_to action: :index
+      end
 
-    new_keywords  = parser.new_keywords
+      new_keywords  = parser.new_keywords
 
-    if new_keywords.present?
-      @keywords = new_keywords.map{|rec| current_user.keywords.create(name: rec)}
-      flash[:success] = "Successfully upload #{@keywords.length} keyword(s)"
-      redirect_to action: :index
-    else
-      flash[:notice] = "New new keyword detected"
+      if new_keywords.present?
+        @keywords = new_keywords.map{|rec| current_user.keywords.create(name: rec)}
+        flash[:success] = "Successfully upload #{@keywords.length} keyword(s)"
+        redirect_to action: :index
+      else
+        flash[:notice] = "New new keyword detected"
+        redirect_to action: :index
+      end
+
+    rescue CSV::InvalidEncodingError => e
+      flash[:error] = "File type must be CSV"
       redirect_to action: :index
     end
   end
@@ -60,4 +68,8 @@ class KeywordsController < ApplicationController
     @keyword = current_user.keywords.find(params[:id])
   end
 
+  def record_not_found
+    flash[:error] = "The page you're looking for is not found"
+    redirect_to action: :index
+  end
 end

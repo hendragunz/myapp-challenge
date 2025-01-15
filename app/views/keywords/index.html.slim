@@ -14,16 +14,19 @@ section.is-title-bar
 
     .card-content
       = form_for(@upload_keywords, as: :upload_keywords, url: keywords_path, multipart: true) do |f|
-        .field
-          label.block
-            span.sr-only
-              | Choose profile photo
-            = f.file_field :file, accept: 'text/csv', class: "block w-full text-sm text-slate-500 \
-                                                              file:mr-4 file:py-2 file:px-4 \
-                                                              file:rounded-full file:border-0 \
-                                                              file:text-sm file:font-semibold"
-          p.help
-            | Upload 1-100 keywords per file
+        .flex
+          div[class="w-1/2"]
+            .field
+              label.block
+                span.sr-only
+                  | Choose profile photo
+                = f.file_field :file, accept: 'text/csv', class: "block text-sm text-slate-500 \
+                                                                                  file:mr-4 file:py-2 file:px-4 \
+                                                                                  file:rounded-full file:border-0 \
+                                                                                  file:text-sm file:font-semibold"
+
+              p.help
+                | Upload 1-100 keywords per file
 
         hr
 

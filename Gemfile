@@ -40,18 +40,23 @@ group :development, :test do
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
   gem 'dotenv', groups: [:development, :test]
+  gem 'rspec-rails', '~> 7.0.0'
+  gem 'factory_bot_rails'
+  gem 'ffaker'
+  gem "awesome_print"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem 'annotate'
-  gem "awesome_print"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 gem "tailwindcss-rails", "~> 3.2"
