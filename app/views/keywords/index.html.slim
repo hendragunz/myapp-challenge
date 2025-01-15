@@ -13,7 +13,7 @@ section.is-title-bar
         |  Upload Keywords
 
     .card-content
-      = form_for(@upload_keywords, as: :upload_keywords, url: keywords_path, multipart: true) do |f|
+      = form_for({}, as: :upload_keywords, url: keywords_path, multipart: true) do |f|
         .flex
           div[class="w-1/2"]
             .field
@@ -35,6 +35,19 @@ section.is-title-bar
             = f.submit 'Submit', class: 'button green'
             = link_to 'Example CSV', '/example_keywords.csv', target: :blank, class: 'ml-4'
 
+  .card.mb-6
+    header.card-header
+      p.card-header-title
+        span.icon
+          i.mdi.mdi-ballot
+        |  Search Keywords
+
+    .card-content
+      = form_for(@search, as: :search, url: keywords_path, method: :get, html: { class: 'w-1/2 max-s-w'}) do |f|
+        .flex.items-center.border-b.border-gray-500.py-2
+          = f.text_field :terms, class: 'appearance-none bg-transparent border-none w-full text-gray-700 mr-3. y-1.px-2 leading-tight focus:outline-none', placeholder: "Search with keyword's name"
+          = submit_tag "Search", class: 'flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded'
+          = link_to "Show all", keywords_path, class: 'flex-shrink-0 border-transparent border-4 text-gray-700 hover:text-teal-800 text-sm py-1 px-2 rounded'
 
 
   = render 'table', keywords: @keywords
