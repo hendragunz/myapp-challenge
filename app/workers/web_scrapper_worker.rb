@@ -2,6 +2,8 @@ class WebScrapperWorker
   include Sidekiq::Job
   include Sidekiq::Throttled::Worker
 
+  sidekiq_options retry: true
+
   sidekiq_throttle(
     concurrency:  { limit: 1 },
     threshold:    { limit: 1, period: 10.second }

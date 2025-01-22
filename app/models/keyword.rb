@@ -34,11 +34,13 @@ class Keyword < ApplicationRecord
     # scrap using selenium chrome
     # headless mode
     #
-
     options     = Selenium::WebDriver::Chrome::Options.new
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+
+    # It seem even using proxy, it still doesn't works  :(
+    # options.add_argument("--proxy-server=137.184.100.135:80")
 
     # heroku need to know where is the path for Chrome
     if chrome_bin = ENV.fetch('GOOGLE_CHROME_REAL', nil)
