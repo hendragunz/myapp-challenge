@@ -51,9 +51,9 @@ class Keyword < ApplicationRecord
     document  = Nokogiri::HTML(driver.page_source)
 
     # scrap the data
-    self.total_search_results = document.at_css("div#result-stats").text # ex: Sekitar 46.000.000 hasil (0,19 detik)
+    self.total_search_results = document.at_css("div#result-stats").try(:text) # ex: Sekitar 46.000.000 hasil (0,19 detik)
     self.total_links          = document.xpath('//a').size # find all link tags, and return the total
-    self.total_adwords        = document.css('div[data-text-ad="1"]').size
+    self.total_adwords        = document.css('div[data-text-ad="1"]').try(:size)
     self.html_page            = driver.page_source
     self.processed_at         = Time.now
     self.save!
