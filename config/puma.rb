@@ -42,3 +42,5 @@ pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 on_worker_boot do
   ActiveRecord::Base.establish_connection
 end
+
+preload_app!
