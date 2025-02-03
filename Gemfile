@@ -59,7 +59,7 @@ group :test do
   gem 'rails-controller-testing'
 end
 
-gem "tailwindcss-rails", "~> 3.2"
+gem "tailwindcss-rails", "~> 4.0"
 
 gem "grape", "~> 2.2"
 gem 'grape-entity'
