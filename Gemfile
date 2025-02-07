@@ -40,7 +40,7 @@ group :development, :test do
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
   gem 'dotenv', groups: [:development, :test]
-  gem 'rspec-rails', '~> 7.0.0'
+  gem 'rspec-rails', '~> 7.1.1'
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem "awesome_print"
