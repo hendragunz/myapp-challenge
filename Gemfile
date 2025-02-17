@@ -14,7 +14,7 @@ gem "slim-rails"
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'devise-token_authenticatable'
 gem "redis", ">= 4.0.1"
-gem 'sidekiq', '~> 7.3', '>= 7.3.7'
+gem 'sidekiq', '~> 7.3'
 gem 'sidekiq-throttled', '~> 1.5', '>= 1.5.2'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
